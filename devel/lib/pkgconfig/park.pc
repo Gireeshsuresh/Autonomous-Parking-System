@@ -1,0 +1,8 @@
+prefix=/home/dexter/autopark_ws/devel
+
+Name: park
+Description: Description of park
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/dexter/autopark_ws/devel/lib 
+Requires: 
