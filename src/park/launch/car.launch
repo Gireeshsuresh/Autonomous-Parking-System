@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+  <arg name="misc" value="$(find park)/models/car.sdf" />
+  </include>
+</launch>
