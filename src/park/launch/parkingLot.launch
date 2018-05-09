@@ -27,15 +27,16 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-<group ns="catvehicle">
-<param name="robot_description"	
-         command="$(find xacro)/xacro.py '$(find catvehicle)/urdf/catvehicle.xacro' roboname:='catvehicle' front_laser_points:='$(arg front_laser_points)' velodyne_points:='$(arg velodyne_points)' camera_right:='$(arg camera_right)' camera_left:='$(arg camera_left)' velodyne_max_angle:='$(arg velodyne_max_angle)' velodyne_min_angle:='$(arg velodyne_min_angle)'" />
 
-<include file="$(find catvehicle)/launch/catvehicle.launch">
-    <arg name="robot_name" value="catvehicle"/> 
-    <arg name="init_pose" value="-x 8 -y 11 -z 0"/>
-    <arg name="config_file" value="catvehicle_control.yaml"/>
-</include>
-</group>
+
+<group ns="husky">
+	<include file="$(find husky_gazebo)/launch/spawn_husky.launch">
+    	<arg name="laser_enabled" default="true"/>
+    	<arg name="kinect_enabled" default = "true"/>
+		<arg name="x" default="3.50"/>
+		<arg name="y" default="-11.0"/>
+		<arg name="yaw" default="1.55"/>
+  	</include>
+</group>>
 
 </launch>
