@@ -33,10 +33,27 @@
 	<include file="$(find husky_gazebo)/launch/spawn_husky.launch">
     	<arg name="laser_enabled" default="true"/>
     	<arg name="kinect_enabled" default = "true"/>
-		<arg name="x" default="3.50"/>
+		<arg name="x" default="4.0"/>
 		<arg name="y" default="-11.0"/>
-		<arg name="yaw" default="1.55"/>
+		<arg name="yaw" default="1.50"/>
   	</include>
-</group>>
+</group>
+  
+
+  <!-- Open Gmapping -->
+  <!-- <include file="$(find husky_navigation)/launch/gmapping.launch" /> -->
+
+  <!-- Open AMCL -->
+  <include file="$(find husky_navigation)/launch/amcl.launch" />
+
+  <!-- Run the map server -->
+  <arg name="map_file" default="$(find husky_navigation)/maps/playpen_map.yaml"/>
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- Move Base -->
+  <include file="$(find husky_navigation)/launch/move_base.launch" />
+
+  <!-- Open RVIZ 
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find husky_viz)/rviz/robot.rviz" /> -->
 
 </launch>
